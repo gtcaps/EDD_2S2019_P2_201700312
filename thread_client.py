@@ -4,11 +4,16 @@ import select
 import sys
 import time
 import os
+import json
+from methods import *
 
 class Thread_Client:
 
-    def __init__(self, interval=1):
+    def __init__(self, waiting_block, blocks_list, interval=1):
         self.interval = interval
+        self.waiting_block = waiting_block
+        self.blocks_list = blocks_list
+
 
         self.server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         if len(sys.argv) != 3:
@@ -32,17 +37,25 @@ class Thread_Client:
                     message = str(message.decode('utf-8'))
                     message = message.strip()
                     
-                    #print (message.decode('utf-8'))
                     if message == "true":
-                        print("Voy a añadir el bloque a la lista de blockchains")
+                        if self.waiting_block is not None:
+                            self.blocks_list.add(self.waiting_block)
+                            self.waiting_block = None
                     elif message == "false":
-                        print("No puedo añadir el bloque a la lista, porque fue modificado")
+                        if self.waiting_block is not None:
+                            self.waiting_block = None
                     else:
-                        pass
-                        #print("Voy a verificar la cadena que me has enviado y procesar el json:----->{}<------------".format(message))
-            time.sleep(self.interval)
+                        try:
+                            json.loads(message)
+                            verify_string = verify_json_string(message)
+                            self.waiting_block = message
+                            self.server.sendall(verify_string.encode("utf-8"))
+                            self.server.sendall(verify_string.encode("utf-8"))
+                        except:
+                            pass
 
     def send_message(self, message):
+        self.waiting_block = message
         self.server.sendall(message.encode('utf-8'))
 
 

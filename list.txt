@@ -2,6 +2,8 @@ digraph G{
 	rankdir = TB;	node[shape=record];
 	graph[ranksep = "1"];
 
-	root[label="{The Blockchain is empty}"];
+	node0[label="CLASS: Estructuras de datos \n TIMESTAMP: 20-10-2019-::13:31:16 \n P.HASH: 0000 \n HASH: 55ff5faffd6fed4fecfda6077e421820b6dae07b4701da225fe6d6315b49c342"];
+	node0->node1[dir=both];
+	node1[label="CLASS: Compiladores 2 \n TIMESTAMP: 20-10-2019-::13:31:22 \n P.HASH: 55ff5faffd6fed4fecfda6077e421820b6dae07b4701da225fe6d6315b49c342 \n HASH: fad5fabcae123ea351bad09f98902dd4a0db949158bf3fdb404ab5f18b1b79e7"];
 
 }

@@ -5,9 +5,15 @@ from thread_client import Thread_Client
 import sys
 
 
+
 blocks_list = DoublyLinkedList()
 selected_block = None
-thread_client = Thread_Client()
+waiting_block = None
+
+
+thread_client = Thread_Client(waiting_block, blocks_list)
+
+
 
 '''
 my_list = DoublyLinkedList()
@@ -40,7 +46,7 @@ def main_menu():
         if option is 1:
             insert_menu()
         elif option is 2:
-            print("SELECCIONASTE 2")
+            select_block(blocks_list.head)
         elif option is 3:
             reports_menu()
         elif option is 4:
@@ -63,6 +69,7 @@ def insert_menu():
 
     if file_path.is_file():
         file_data = data_to_json(file_name, blocks_list)
+        waiting_block = file_data
         thread_client.send_message(file_data)
     else:
         print("\n\n    [ERROR] EL ARCHIVO {}.csv QUE INTENTAS CARGAR NO EXISTE".format(file_name))
@@ -130,5 +137,38 @@ def selected_block_menu():
             selected_block_menu()
         
 
+def select_block(block):
+    if blocks_list is None:
+        print("     No existe ningun bloque en la lista")
+    else:
+        try:
+            data_aux = json.loads(block.data)
+            selected = int(input(""" 
+            -------------- SELECT BLOCK --------------
+            INDEX: {}
+            CLASS: {}
+        
+            1. SELECT THIS BLOCK
+            2. NEXT BLOCK
+            3. PREVIOUS BLOCK
+            4. BACK TO MAIN MENU
+            ------------------------------------------
+            SELECT A OPTION: 
+            """.format(data_aux["INDEX"], data_aux["CLASS"])))
+
+            if selected is 1:
+                print("bloque seleccionado + " + str(data_aux["INDEX"]))
+            elif selected is 2 and block.next is not None:
+                select_block(block.next) 
+            elif selected is 3 and block.back is not None:
+                select_block(block.back) 
+            elif selected is 4:
+                return 0
+            else:
+                select_block(block)
+        except:
+            select_block(block)
+
+        
 
 main_menu()

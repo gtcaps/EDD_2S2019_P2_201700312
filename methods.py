@@ -63,17 +63,17 @@ def verify_json_string(json_string):
         
         verify_hash = hash_256(block["INDEX"], block["TIMESTAMP"], block["CLASS"], json.dumps(data_block), block["PREVIOUSHASH"])
 
-        print("Verified Hash: {}".format(verify_hash))
-        print("Block Hash: {}".format(block["HASH"]))
+        #print("Verified Hash: {}".format(verify_hash))
+        #print("Block Hash: {}".format(block["HASH"]))
 
         if verify_hash == block["HASH"]:
-            return True
+            return "true"
         else:
-            return False
+            return "false"
             
     except:
         print('[Error] No se puede verificar la cadena')
-        return False
+        return "false"
 
 
 def addStudent(student_dictonary, list_dictionary):

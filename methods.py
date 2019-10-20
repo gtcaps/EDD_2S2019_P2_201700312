@@ -100,5 +100,5 @@ def generate_avl(data):
     	student = str(student).split("-")
     	new_avl.add(int(student[0]), student[1])
 	
-    new_avl.graph('full')
+    return new_avl
     

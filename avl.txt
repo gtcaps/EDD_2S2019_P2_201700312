@@ -3,18 +3,20 @@ digraph G{
 	node[shape=record];
 	graph[ranksep = "1"];
 
-	nodo_201700312[label="<l>|Carne: 201700312 \n Nombre: Adrian \n Altura: 3 \n FE: 1 |<r>"];
-	nodo_201700312:l->nodo_201700310;
-	nodo_201700312:r->nodo_201700330;
-	nodo_201700310[label="<l>|Carne: 201700310 \n Nombre: Domingo \n Altura: 1 \n FE: -1 |<r>"];
-	nodo_201700310:l->nodo_201700300;
-	nodo_201700300[label="<l>|Carne: 201700300 \n Nombre: Esteban \n Altura: 0 \n FE: 0 |<r>"];
-	nodo_201700330[label="<l>|Carne: 201700330 \n Nombre: Juan \n Altura: 2 \n FE: -1 |<r>"];
-	nodo_201700330:l->nodo_201700315;
-	nodo_201700330:r->nodo_201700350;
-	nodo_201700315[label="<l>|Carne: 201700315 \n Nombre: Ruth \n Altura: 1 \n FE: 1 |<r>"];
-	nodo_201700315:r->nodo_201700320;
-	nodo_201700320[label="<l>|Carne: 201700320 \n Nombre: Majo \n Altura: 0 \n FE: 0 |<r>"];
-	nodo_201700350[label="<l>|Carne: 201700350 \n Nombre: Pedro \n Altura: 0 \n FE: 0 |<r>"];
+	nodo_201700120[label="<l>|Carne: 201700120 \n Nombre: Isco \n Altura: 3 \n FE: 1 |<r>"];
+	nodo_201700120:l->nodo_201700100;
+	nodo_201700120:r->nodo_201700310;
+	nodo_201700100[label="<l>|Carne: 201700100 \n Nombre: Arnold \n Altura: 1 \n FE: -1 |<r>"];
+	nodo_201700100:l->nodo_201700090;
+	nodo_201700090[label="<l>|Carne: 201700090 \n Nombre: Franco \n Altura: 0 \n FE: 0 |<r>"];
+	nodo_201700310[label="<l>|Carne: 201700310 \n Nombre: Ronnie \n Altura: 2 \n FE: 1 |<r>"];
+	nodo_201700310:l->nodo_201700250;
+	nodo_201700310:r->nodo_201700318;
+	nodo_201700250[label="<l>|Carne: 201700250 \n Nombre: Hazard \n Altura: 0 \n FE: 0 |<r>"];
+	nodo_201700318[label="<l>|Carne: 201700318 \n Nombre: Calum \n Altura: 1 \n FE: 0 |<r>"];
+	nodo_201700318:l->nodo_201700315;
+	nodo_201700318:r->nodo_201700320;
+	nodo_201700315[label="<l>|Carne: 201700315 \n Nombre: Jay \n Altura: 0 \n FE: 0 |<r>"];
+	nodo_201700320[label="<l>|Carne: 201700320 \n Nombre: Jeremy \n Altura: 0 \n FE: 0 |<r>"];
 
 }

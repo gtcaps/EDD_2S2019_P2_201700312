@@ -9,30 +9,14 @@ import sys
 blocks_list = DoublyLinkedList()
 selected_block = None
 waiting_block = None
-
+my_block = None
 
 thread_client = Thread_Client(waiting_block, blocks_list)
-
-
-
-'''
-my_list = DoublyLinkedList()
-my_list.add(data_to_json('file', my_list))
-my_list.add(data_to_json('file2', my_list))
-my_data = data_to_json('file2', my_list)
-#print(verify_json_string(my_data))
-#generate_avl(my_data)
-
-my_list.graph_list()
-
-#my_list.print()
-'''
-
 
 def main_menu():
 
     try:
-
+        global my_block
         option = int(input(""" 
         -------------- BLOCKCHAIN MENU --------------
         1. INSERT BLOCK
@@ -46,7 +30,10 @@ def main_menu():
         if option is 1:
             insert_menu()
         elif option is 2:
-            select_block(blocks_list.head)
+            x = select_block(blocks_list.head)
+            if x is not None:
+                print(x.data)
+                my_block = x
         elif option is 3:
             reports_menu()
         elif option is 4:
@@ -101,7 +88,7 @@ def reports_menu():
 
 
 def selected_block_menu():
-    if selected_block is None:
+    if my_block is None:
         print("\n\n    Debes seleccionar primero un bloque")
     else:
         try:
@@ -117,17 +104,17 @@ def selected_block_menu():
             """))
 
             if block_menu_option is 1:
-                #graficar el arbol completo
-                print('full tree')
+                avl = generate_avl(my_block.data)
+                avl.graph('full')
             elif block_menu_option is 2:
-                #graficar el arbol con el recorrido en orden
-                print('inorder traversal')
+                avl = generate_avl(my_block.data)
+                avl.graph('inorder')
             elif block_menu_option is 3:
-                #graficar el arbol con el recorrido en pre orden
-                print('preorder traversal')
+                avl = generate_avl(my_block.data)
+                avl.graph('preorder')
             elif block_menu_option is 4:
-                #graficar el arbol con el recorrido en post orden
-                print('postorder traversal')
+                avl = generate_avl(my_block.data)
+                avl.graph('postorder')
             elif block_menu_option is 5:
                 return 0
             else:
@@ -146,22 +133,27 @@ def select_block(block):
             selected = int(input(""" 
             -------------- SELECT BLOCK --------------
             INDEX: {}
+            TIMESTAMP: {}
             CLASS: {}
+            PREVIOUSHASH: {}
+            HASH: {}
         
             1. SELECT THIS BLOCK
-            2. NEXT BLOCK
-            3. PREVIOUS BLOCK
+            2. PREVIOUS BLOCK
+            3. NEXT BLOCK
             4. BACK TO MAIN MENU
             ------------------------------------------
             SELECT A OPTION: 
-            """.format(data_aux["INDEX"], data_aux["CLASS"])))
+            """.format(data_aux["INDEX"], data_aux["TIMESTAMP"], data_aux["CLASS"], data_aux["PREVIOUSHASH"], data_aux["HASH"])))
 
             if selected is 1:
-                print("bloque seleccionado + " + str(data_aux["INDEX"]))
-            elif selected is 2 and block.next is not None:
-                select_block(block.next) 
-            elif selected is 3 and block.back is not None:
-                select_block(block.back) 
+                global my_block
+                my_block = block
+                return block
+            elif selected is 3 and block.next is not None:
+                select_block(block.next)
+            elif selected is 2 and block.back is not None:
+                select_block(block.back)
             elif selected is 4:
                 return 0
             else:

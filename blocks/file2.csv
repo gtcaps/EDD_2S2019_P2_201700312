@@ -1,28 +1,28 @@
-class,Estructuras de datos
+class,Compiladores 2
 data,"{
-    ""value"":""201403525-Nery"",
+    ""value"":""201700312-Adrian"",
     ""left"":{
-        ""value"":""201212963-Andres"",
+        ""value"":""201700350-Pedro"",
         ""left"":{
-            ""value"":""201005874-Estudiante1"",
+            ""value"":""201700330-Juan"",
             ""left"":null,
             ""right"":null
         },
         ""right"":{
-            ""value"":""201313526-Alan"",
+            ""value"":""201700300-Esteban"",
             ""left"":null,
             ""right"":null
         }
     },
     ""right"":{
-        ""value"":""201403819-Anne"",
+        ""value"":""201700310-Domingo"",
         ""left"":{
-            ""value"":""201403624-Fernando"",
+            ""value"":""201700315-Ruth"",
             ""left"":null,
             ""right"":null
         },
         ""right"":{
-            ""value"":""201602255-Estudiante2"",
+            ""value"":""201700320-Majo"",
             ""left"":null,
             ""right"":null
         }

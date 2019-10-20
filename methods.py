@@ -40,7 +40,7 @@ def hash_256(index, timestamp, class_name, data, previous_hash):
 def data_to_json(file_name, prev_hash):
     data = get_data_csv(file_name)
     block = {
-		"INDEX": 0,
+		"INDEX": prev_hash.length,
 		"TIMESTAMP": "{}".format(datetime.now().strftime('%d-%m-%Y-::%H:%M:%S')),
 		"CLASS": "{}".format(data["class"]),
 		"DATA": data["data"],

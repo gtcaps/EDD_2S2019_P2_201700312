@@ -1,12 +1,13 @@
 from list import DoublyLinkedList
 from methods import *
 from pathlib import Path
+from thread_client import Thread_Client
 import sys
 
 
 blocks_list = DoublyLinkedList()
 selected_block = None
-
+thread_client = Thread_Client()
 
 '''
 my_list = DoublyLinkedList()
@@ -62,7 +63,7 @@ def insert_menu():
 
     if file_path.is_file():
         file_data = data_to_json(file_name, blocks_list)
-        print(file_data)
+        thread_client.send_message(file_data)
     else:
         print("\n\n    [ERROR] EL ARCHIVO {}.csv QUE INTENTAS CARGAR NO EXISTE".format(file_name))
 
@@ -128,5 +129,6 @@ def selected_block_menu():
         except:
             selected_block_menu()
         
+
 
 main_menu()
